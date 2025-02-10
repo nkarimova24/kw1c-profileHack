@@ -33,7 +33,7 @@ function ProfilePage({ resetTimer }) {
   const handleBackToHome = () => {
     const confirmLeave = window.confirm("Weet je zeker dat je deze pagina wilt verlaten? De timer zal worden gereset");
     if (confirmLeave) {
-      // resetTimer();
+      resetTimer();
       navigate("/");
     }
   };

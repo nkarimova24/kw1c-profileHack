@@ -9,6 +9,11 @@ import "./index.css";
 
 function App() {
   const [attempts, setAttempts] = useState([]);
+  const [timerKey, setTimerKey] = useState(0);
+
+  const resetTimer = () => {
+    setTimerKey(prevKey => prevKey + 1);
+  };
 
   return (
     <Router>
@@ -16,11 +21,11 @@ function App() {
         <header className="w-full bg-blue-600 p-4 text-center text-xl font-bold text-white">
           Fakebook
         </header>
-        <Timer />
+        <Timer key={timerKey} />
         <Attempts attempts={attempts} />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/profile/:id" element={<ProfilePage resetTimer={resetTimer} />} />
           <Route path="/login/:id" element={<Login setAttempts={setAttempts} />} />
         </Routes>
       </div>
