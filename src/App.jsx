@@ -23,7 +23,6 @@ function App() {
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/login/:id" element={<Login setAttempts={setAttempts} />} />
         </Routes>
-        
       </div>
     </Router>
   );

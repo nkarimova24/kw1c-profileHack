@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const loginData = {
   "ayaan-hassan": { username: "admin", password: "NoorFoto1990", name: "Ayaan Hassan" },
@@ -39,6 +39,9 @@ function Login({ setAttempts }) {
             />
             <button className="bg-blue-500 p-2 rounded-lg text-white hover:bg-blue-400">Inloggen</button>
           </form>
+          <Link to={`/profile/${id}`} className="mt-4 block bg-gray-500 p-2 rounded-lg text-white hover:bg-gray-400">
+            Terug naar Profiel
+          </Link>
         </>
       ) : (
         <p className="text-red-500">Profiel niet gevonden.</p>

@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const profiles = {
   "ayaan-hassan": {
@@ -25,9 +25,18 @@ const profiles = {
   }
 };
 
-function Profile() {
+function Profile({ resetTimer }) {
   const { id } = useParams();
+  const navigate = useNavigate();
   const profile = profiles[id] || profiles["ayaan-hassan"];
+
+  const handleBackToHome = () => {
+    const confirmLeave = window.confirm("Weet je zeker dat je deze pagina wilt verlaten? De timer zal worden gereset");
+    if (confirmLeave) {
+      resetTimer();
+      navigate("/");
+    }
+  };
 
   return (
     <div className="text-center mt-10 bg-white p-6 rounded-lg shadow-lg w-96">
@@ -49,9 +58,9 @@ function Profile() {
       <Link to={`/login/${id}`} className="mt-6 block bg-blue-500 p-2 rounded-lg text-white hover:bg-blue-400">
         Probeer in te loggen
       </Link>
-      <Link to="/" className="mt-4 block bg-gray-500 p-2 rounded-lg text-white hover:bg-gray-400">
+      <button onClick={handleBackToHome} className="mt-4 block bg-gray-500 p-2 rounded-lg text-white hover:bg-gray-400">
         Terug naar Home
-      </Link>
+      </button>
     </div>
   );
 }
