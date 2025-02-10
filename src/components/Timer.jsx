@@ -22,7 +22,7 @@ function Timer() {
   useEffect(() => {
     const timeInterval = setInterval(() => {
       setElapsedTime((prev) => prev + 1);
-    }, 1000); 
+    }, 1000); // Elke seconde verhogen
     
     const hintInterval = setInterval(() => {
       const currentHints = profileHints[location.pathname] || [

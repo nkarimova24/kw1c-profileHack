@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
 import Home from "./components/Home";
 import Timer from "./components/Timer";
+import Attempts from "./components/Attempts";
 import "./index.css";
 
 function App() {
+  const [attempts, setAttempts] = useState([]);
+
   return (
     <Router>
       <div className="min-h-screen bg-gray-100 text-black flex flex-col items-center p-4">
@@ -13,10 +17,11 @@ function App() {
           Fakebook
         </header>
         <Timer />
+        <Attempts attempts={attempts} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile/:id" element={<Profile />} />
-          <Route path="/login/:id" element={<Login />} />
+          <Route path="/login/:id" element={<Login setAttempts={setAttempts} />} />
         </Routes>
         <div className="mt-6">
           <h2 className="text-lg font-bold">Kies een profiel om te hacken:</h2>
