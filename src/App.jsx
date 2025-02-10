@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
 import Home from "./components/Home";
+import Timer from "./components/Timer";
 import "./index.css";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <header className="w-full bg-blue-600 p-4 text-center text-xl font-bold text-white">
           Fakebook
         </header>
+        <Timer />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile/:id" element={<Profile />} />

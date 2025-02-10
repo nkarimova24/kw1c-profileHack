@@ -4,6 +4,7 @@ const profiles = {
   "ayaan-hassan": {
     name: "Ayaan Hassan",
     location: "Amsterdam, Nederland",
+    birthdate: "15 maart 1990",
     hobby: "Fotografie, reizen, programmeren",
     image: "https://via.placeholder.com/150",
     posts: [
@@ -14,6 +15,7 @@ const profiles = {
   "emma-van-dijk": {
     name: "Emma van Dijk",
     location: "Rotterdam, Nederland",
+    birthdate: "22 juli 1995",
     hobby: "Schilderen, muziek, lezen",
     image: "https://via.placeholder.com/150",
     posts: [
@@ -36,6 +38,7 @@ function Profile() {
       />
       <h2 className="text-xl font-bold mt-4">{profile.name}</h2>
       <p className="text-gray-600">{profile.location}</p>
+      <p className="text-gray-400">{profile.birthdate}</p>
       <p className="mt-4">Hobby's: {profile.hobby}</p>
       <h3 className="text-lg font-bold mt-6">Posts</h3>
       {profile.posts.map((post, index) => (
