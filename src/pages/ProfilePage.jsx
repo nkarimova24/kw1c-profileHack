@@ -17,10 +17,10 @@ const profiles = {
     location: "Rotterdam, Nederland",
     birthdate: "22 juli 1995",
     hobby: "Schilderen, muziek, lezen",
-    image: "https://via.placeholder.com/150",
+    image: "https://forcreativegirls.com/contents/uploads/2022/07/How-Creative-Women-Enhance-their-Career-Prospects.jpg",
     posts: [
-      { text: "Vandaag een prachtig schilderij afgemaakt! 🎨", image: "https://via.placeholder.com/200" },
-      { text: "Nieuwe boeken gekocht voor mijn collectie. 📚", image: "https://via.placeholder.com/200" }
+      { text: "Vandaag een prachtig schilderij afgemaakt! 🎨", image: "https://cdn.shopifycdn.net/s/files/1/2497/5092/files/9_22.jpg?v=1620347079", likes: 108 },
+      { text: "Nieuwe boeken gekocht voor mijn collectie. 📚", image: "https://i.ytimg.com/vi/AYK0NMkCkic/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBLTMlp9-Xi8k77ye_XhfEhFnsjdg", likes: 90 }
     ]
   }
 };
