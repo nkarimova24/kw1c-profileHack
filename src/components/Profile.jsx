@@ -49,6 +49,9 @@ function Profile() {
       <Link to={`/login/${id}`} className="mt-6 block bg-blue-500 p-2 rounded-lg text-white hover:bg-blue-400">
         Probeer in te loggen
       </Link>
+      <Link to="/" className="mt-4 block bg-gray-500 p-2 rounded-lg text-white hover:bg-gray-400">
+        Terug naar Home
+      </Link>
     </div>
   );
 }
