@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
-import Profile from "./components/Profile";
-import Home from "./components/Home";
+import ProfilePage from "./pages/ProfilePage";
+import HomePage from "./pages/HomePage";
 import Timer from "./components/Timer";
 import Attempts from "./components/Attempts";
 import "./index.css";
@@ -19,8 +19,8 @@ function App() {
         <Timer />
         <Attempts attempts={attempts} />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
           <Route path="/login/:id" element={<Login setAttempts={setAttempts} />} />
         </Routes>
       </div>

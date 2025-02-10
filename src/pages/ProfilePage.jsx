@@ -6,10 +6,10 @@ const profiles = {
     location: "Amsterdam, Nederland",
     birthdate: "15 maart 1990",
     hobby: "Fotografie, reizen, programmeren",
-    image: "https://via.placeholder.com/150",
+    image: "https://assets.thenorthface.com/image/upload/q_auto:best,f_auto:image/v1727287263/240924-accessories-m-cspot",
     posts: [
-      "Mooie dag om wat foto's te maken! 📸",
-      "Ik heb een nieuwe kat, Noor! 🐱"
+      { text: "Mooie dag om wat foto's te maken! 📸", image: "https://i0.wp.com/www.wattisduurzaam.nl/wp-content/uploads/6005560602_3f3ddc3a4a_o-1.jpg", likes: 34 },
+      { text: "Ik heb een nieuwe kat, Noor! 🐱", image: "https://assets.tiltify.com/uploads/media_type/image/203025/blob-09636982-a21a-494b-bbe4-3692c2720ae3.jpeg", likes: 71 }
     ]
   },
   "emma-van-dijk": {
@@ -19,13 +19,13 @@ const profiles = {
     hobby: "Schilderen, muziek, lezen",
     image: "https://via.placeholder.com/150",
     posts: [
-      "Vandaag een prachtig schilderij afgemaakt! 🎨",
-      "Nieuwe boeken gekocht voor mijn collectie. 📚"
+      { text: "Vandaag een prachtig schilderij afgemaakt! 🎨", image: "https://via.placeholder.com/200" },
+      { text: "Nieuwe boeken gekocht voor mijn collectie. 📚", image: "https://via.placeholder.com/200" }
     ]
   }
 };
 
-function Profile({ resetTimer }) {
+function ProfilePage({ resetTimer }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const profile = profiles[id] || profiles["ayaan-hassan"];
@@ -33,7 +33,7 @@ function Profile({ resetTimer }) {
   const handleBackToHome = () => {
     const confirmLeave = window.confirm("Weet je zeker dat je deze pagina wilt verlaten? De timer zal worden gereset");
     if (confirmLeave) {
-      resetTimer();
+      // resetTimer();
       navigate("/");
     }
   };
@@ -52,7 +52,9 @@ function Profile({ resetTimer }) {
       <h3 className="text-lg font-bold mt-6">Posts</h3>
       {profile.posts.map((post, index) => (
         <div key={index} className="mt-2 p-4 bg-gray-200 rounded-lg">
-          <p><strong>{profile.name}:</strong> {post}</p>
+          <p><strong>{profile.name}:</strong> {post.text}</p>
+          <img src={post.image} alt="Post afbeelding" className="mt-2 rounded-lg w-full" />
+          <p className="mt-2 text-red-500 font-bold">❤️ {post.likes} likes</p>
         </div>
       ))}
       <Link to={`/login/${id}`} className="mt-6 block bg-blue-500 p-2 rounded-lg text-white hover:bg-blue-400">
@@ -65,4 +67,4 @@ function Profile({ resetTimer }) {
   );
 }
 
-export default Profile;
+export default ProfilePage;
