@@ -11,7 +11,15 @@ const profileHints = {
     "Het wachtwoord heeft te maken met schilderen.",
     "Het wachtwoord bevat een cijfer.",
     "Denk aan de geboortedatum."
-  ]
+  ],
+  "/login/j.ellens": [
+    "Het wachtwoord heeft te maken met zijn skateboarden",
+    "Denk aan de geboortejaar."
+  ],
+  "/login/lukas.20": [
+    "Kijk titel post",
+    "Denk aan zijn leeftijd"
+  ],
 };
 
 function Timer() {
@@ -31,7 +39,7 @@ function Timer() {
       ];
       const randomHint = currentHints[Math.floor(Math.random() * currentHints.length)];
       setHint(randomHint);
-    }, 60000); 
+    }, 3000); 
     
     return () => {
       clearInterval(timeInterval);
