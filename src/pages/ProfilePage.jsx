@@ -85,7 +85,7 @@ const profiles = {
 function ProfilePage({ resetTimer }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  // Fallback default profile when none is found
+  //fallback default profile when none is found
   const profile = profiles[id] || profiles["ayaan-hassan"];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -97,12 +97,9 @@ function ProfilePage({ resetTimer }) {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white py-8 px-4">
-      {/* Header with Branding */}
-    
-
-      {/* Main content: Profile Info & Posts Grid */}
+      {/*grid*/}
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
-        {/* Profile Info Column */}
+        {/*profile info column*/}
         <div className="md:w-1/3">
           <Card className="bg-gray-800 border border-gray-700 shadow-lg">
             <CardHeader floated={false} className="h-56">
@@ -121,22 +118,21 @@ function ProfilePage({ resetTimer }) {
               )}
             </CardHeader>
             <CardBody>
-              <Typography variant="h5" className="mb-2">
-                {profile.name}
+              <Typography variant="h5" className="text-gray-400 mb-2">
+                {profile.name}  <Typography variant="small" className="text-gray-400 mb-3">
+                {profile.birthdate}
+              </Typography>
               </Typography>
               <Typography className="text-gray-400 mb-1">
                 {profile.location}
               </Typography>
-              <Typography variant="small" className="text-gray-500 mb-4">
-                {profile.birthdate}
-              </Typography>
-              <Typography>
-                <strong>Hobby's:</strong> {profile.hobby}
+              <Typography className="text-gray-400 mb-4">
+                <strong>Ik hou me graag bezig met...</strong> {profile.hobby}
               </Typography>
             </CardBody>
             <CardFooter className="flex flex-col gap-2">
               <Link to={`/login/${id}`}>
-                <Button fullWidth variant="filled" color="blue">
+                <Button fullWidth variant="filled">
                   Probeer in te loggen
                 </Button>
               </Link>
@@ -144,6 +140,7 @@ function ProfilePage({ resetTimer }) {
                 fullWidth
                 variant="outlined"
                 color="gray"
+                className="text-gray-400"
                 onClick={() => setIsOpen(true)}
               >
                 Terug naar Home
@@ -152,7 +149,7 @@ function ProfilePage({ resetTimer }) {
           </Card>
         </div>
 
-        {/* Posts Grid Column */}
+        {/*posts grid column */}
         <div className="md:w-2/3">
           <Typography variant="h6" className="mb-4 text-center">
             Posts
@@ -171,7 +168,6 @@ function ProfilePage({ resetTimer }) {
                   <Typography variant="small" className="text-red-400 font-bold">
                     ❤️ {post.likes}
                   </Typography>
-                  {/* Optionally include post text */}
                   <Typography variant="small" className="mt-1 text-gray-300">
                     {post.text}
                   </Typography>
@@ -182,7 +178,7 @@ function ProfilePage({ resetTimer }) {
         </div>
       </div>
 
-      {/* Dialog for Confirmation */}
+      {/*dialog reset*/}
       <Dialog open={isOpen} handler={closeModal}>
         <DialogHeader>Weet je zeker dat je deze pagina wilt verlaten?</DialogHeader>
         <DialogBody divider>
