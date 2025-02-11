@@ -13,6 +13,9 @@ function HomePage() {
         <Link to="/profile/emma-van-dijk" className="block bg-blue-500 p-2 mt-2 rounded-lg text-white hover:bg-blue-400">
           Emma van Dijk
         </Link>
+        <Link to="/profile/j.ellens" className="block bg-blue-500 p-2 mt-2 rounded-lg text-white hover:bg-blue-400">
+          Jamie Ellens
+        </Link>
       </div>
     </div>
   );

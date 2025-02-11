@@ -1,14 +1,36 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+  Input,
+} from "@material-tailwind/react";
 
 const loginData = {
-  "ayaan-hassan": { username: "admin", password: "NoorFoto1990", name: "Ayaan Hassan" },
-  "emma-van-dijk": { username: "emma", password: "Schilder123", name: "Emma van Dijk" }
+  "ayaan-hassan": {
+    username: "admin",
+    password: "NoorFoto1990",
+    name: "Ayaan Hassan",
+  },
+  "emma-van-dijk": {
+    username: "admin",
+    password: "Schilder123",
+    name: "Emma van Dijk",
+  },
+  "j.ellens": {
+    username: "admin",
+    password: "KickFlip99",
+    name: "Jamie Ellens",
+  },
 };
 
 function Login({ setAttempts }) {
   const { id } = useParams();
-  const [profileLogin] = useState(loginData[id] || null);
+  const profileLogin = loginData[id] || null;
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
@@ -17,36 +39,55 @@ function Login({ setAttempts }) {
     setAttempts((prev) => [...prev, password]);
 
     if (profileLogin && password === profileLogin.password) {
-      setMessage(`Gefeliciteerd! Je hebt het profiel van ${profileLogin.name} gehackt.`);
+      setMessage(
+        `Gefeliciteerd! Je hebt het profiel van ${profileLogin.name} gehackt.`
+      );
     } else {
       setMessage("Onjuist wachtwoord. Probeer opnieuw.");
     }
   };
 
   return (
-    <div className="text-center mt-10">
+    <div className="flex justify-center mt-10 px-4">
       {profileLogin ? (
-        <>
-          <h2 className="text-xl font-bold">Welkom {profileLogin.name}</h2>
-          <form onSubmit={handleLogin} className="mt-4">
-            <input
-              type="password"
-              placeholder="Wachtwoord"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="block w-60 p-2 mb-2 border border-gray-300 rounded-lg"
-              required
-            />
-            <button className="bg-blue-500 p-2 rounded-lg text-white hover:bg-blue-400">Inloggen</button>
+        <Card className="w-full max-w-md shadow-lg">
+          <CardHeader className="bg-blue-500 text-center py-4">
+            <Typography variant="h5" color="white">
+              Welkom {profileLogin.name}
+            </Typography>
+          </CardHeader>
+          <form onSubmit={handleLogin}>
+            <CardBody className="flex flex-col gap-4">
+              <Input
+                type="password"
+                label="Wachtwoord"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              {message && (
+                <Typography variant="small" color="red">
+                  {message}
+                </Typography>
+              )}
+            </CardBody>
+            <CardFooter className="flex flex-col gap-4">
+              <Button type="submit" fullWidth color="blue">
+                Inloggen
+              </Button>
+              <Link to={`/profile/${id}`}>
+                <Button fullWidth variant="outlined" color="gray">
+                  Terug naar Profiel
+                </Button>
+              </Link>
+            </CardFooter>
           </form>
-          <Link to={`/profile/${id}`} className="mt-4 block bg-gray-500 p-2 rounded-lg text-white hover:bg-gray-400">
-            Terug naar Profiel
-          </Link>
-        </>
+        </Card>
       ) : (
-        <p className="text-red-500">Profiel niet gevonden.</p>
+        <Typography variant="h6" color="red" className="mt-10">
+          Profiel niet gevonden.
+        </Typography>
       )}
-      {message && <p className="mt-2 text-red-500">{message}</p>}
     </div>
   );
 }
