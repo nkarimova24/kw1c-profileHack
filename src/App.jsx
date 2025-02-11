@@ -18,17 +18,14 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center">
-        {/* Fixed Header */}
         <header className="fixed top-0 left-0 z-30 w-full bg-black p-4 text-center text-2xl font-bold">
           InstaBlam
         </header>
 
-        {/* Fixed Timer just below the header */}
         <div className="fixed top-[64px] left-0 z-40 w-full bg-gray-900">
           <Timer key={timerKey} />
         </div>
 
-        {/* Content Container with top padding to offset the fixed header and timer */}
         <div className="w-full pt-[112px] p-4">
           <Attempts attempts={attempts} />
           <Routes>
