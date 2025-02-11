@@ -50,14 +50,14 @@ function LoginPage({ setAttempts }) {
 
   return (
     <div className="flex flex-col items-center mt-10 px-4">
-      <Typography variant="h2" className="mb-6 text-white font-bold">
-        Login bij {profileLogin ? profileLogin.name : "Onbekend profiel"}
+      <Typography variant="h3" className="mb-6  font-bold">
+      Welkom {profileLogin.name}
       </Typography>
       {profileLogin ? (
         <Card className="w-full max-w-md shadow-2xl bg-gray-800 border border-gray-700">
           <CardHeader className="bg-gray-900 text-center py-4">
             <Typography variant="h5" className="text-white">
-              Welkom {profileLogin.name}
+              Login
             </Typography>
           </CardHeader>
           <form onSubmit={handleLogin}>
@@ -78,11 +78,11 @@ function LoginPage({ setAttempts }) {
               )}
             </CardBody>
             <CardFooter className="flex flex-col gap-4">
-              <Button type="submit" fullWidth color="blue">
+              <Button type="submit" f>
                 Inloggen
               </Button>
               <Link to={`/profile/${id}`}>
-                <Button fullWidth variant="outlined" color="gray">
+                <Button fullWidth variant="outlined" className="text-white" color="gray">
                   Terug naar Profiel
                 </Button>
               </Link>
