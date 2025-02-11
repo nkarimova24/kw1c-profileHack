@@ -119,15 +119,15 @@ function ProfilePage({ resetTimer }) {
             </CardHeader>
             <CardBody>
               <Typography variant="h5" className="text-gray-400 mb-2">
-                {profile.name}  <Typography variant="small" className="text-gray-400 mb-3">
+                <div className="text-gray-300">{profile.name}</div>  <Typography variant="small" className="text-gray-400 mb-3">
                 {profile.birthdate}
               </Typography>
               </Typography>
-              <Typography className="text-gray-400 mb-1">
+              <Typography className="text-gray-300 mb-1">
                 {profile.location}
               </Typography>
               <Typography className="text-gray-400 mb-4">
-                <strong>Ik hou me graag bezig met...</strong> {profile.hobby}
+    Ik hou me graag bezig met...<strong className="text-gray-300">{profile.hobby}</strong>
               </Typography>
             </CardBody>
             <CardFooter className="flex flex-col gap-2">
@@ -140,7 +140,7 @@ function ProfilePage({ resetTimer }) {
                 fullWidth
                 variant="outlined"
                 color="gray"
-                className="text-gray-400"
+                className="text-gray-300"
                 onClick={() => setIsOpen(true)}
               >
                 Terug naar Home
@@ -179,13 +179,13 @@ function ProfilePage({ resetTimer }) {
       </div>
 
       {/*dialog reset*/}
-      <Dialog open={isOpen} handler={closeModal}>
-        <DialogHeader>Weet je zeker dat je deze pagina wilt verlaten?</DialogHeader>
-        <DialogBody divider>
-          De timer zal worden gereset.
+      <Dialog className="bg-gray-800 border border-gray-700 shadow-lg" open={isOpen} handler={closeModal}>
+        <DialogHeader className="text-gray-300">Weet je zeker dat je deze pagina wilt verlaten?</DialogHeader>
+        <DialogBody className="text-gray-300">
+          <strong>De timer zal worden gereset</strong>
         </DialogBody>
         <DialogFooter>
-          <Button variant="outlined" color="gray" onClick={closeModal}>
+          <Button className="text-gray-300" onClick={closeModal}>
             Annuleren
           </Button>
           <Button variant="filled" color="red" onClick={handleBackToHome}>
