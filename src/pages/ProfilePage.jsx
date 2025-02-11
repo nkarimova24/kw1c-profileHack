@@ -151,7 +151,7 @@ function ProfilePage({ resetTimer }) {
 
         {/*posts grid column */}
         <div className="md:w-2/3">
-          <Typography variant="h6" className="mb-4 text-center">
+          <Typography variant="h4" className="mb-1 text-left">
             Posts
           </Typography>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
