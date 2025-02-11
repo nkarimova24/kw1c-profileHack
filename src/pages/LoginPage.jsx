@@ -10,6 +10,7 @@ import {
   Input,
 } from "@material-tailwind/react";
 
+// Login data for the different profiles
 const loginData = {
   "ayaan-hassan": {
     username: "admin",
@@ -28,7 +29,7 @@ const loginData = {
   },
 };
 
-function Login({ setAttempts }) {
+function LoginPage({ setAttempts }) {
   const { id } = useParams();
   const profileLogin = loginData[id] || null;
   const [password, setPassword] = useState("");
@@ -48,7 +49,10 @@ function Login({ setAttempts }) {
   };
 
   return (
-    <div className="flex justify-center mt-10 px-4">
+    <div className="flex flex-col items-center mt-10 px-4">
+      <Typography variant="h2" className="mb-6 text-white font-bold">
+        Login bij {profileLogin ? profileLogin.name : "Onbekend profiel"}
+      </Typography>
       {profileLogin ? (
         <Card className="w-full max-w-md shadow-2xl bg-gray-800 border border-gray-700">
           <CardHeader className="bg-gray-900 text-center py-4">
@@ -94,4 +98,4 @@ function Login({ setAttempts }) {
   );
 }
 
-export default Login;
+export default LoginPage;
