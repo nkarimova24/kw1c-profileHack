@@ -12,22 +12,37 @@ function App() {
   const [timerKey, setTimerKey] = useState(0);
 
   const resetTimer = () => {
-    setTimerKey(prevKey => prevKey + 1);
+    setTimerKey((prevKey) => prevKey + 1);
   };
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100 text-black flex flex-col items-center p-4">
-        <header className="w-full bg-blue-600 p-4 text-center text-xl font-bold text-white">
-          Fakebook
+      <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center">
+        {/* Fixed Header */}
+        <header className="fixed top-0 left-0 z-30 w-full bg-black p-4 text-center text-2xl font-bold">
+          InstaBlam
         </header>
-        <Timer key={timerKey} />
-        <Attempts attempts={attempts} />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/profile/:id" element={<ProfilePage resetTimer={resetTimer} />} />
-          <Route path="/login/:id" element={<Login setAttempts={setAttempts} />} />
-        </Routes>
+
+        {/* Fixed Timer just below the header */}
+        <div className="fixed top-[64px] left-0 z-40 w-full bg-gray-900">
+          <Timer key={timerKey} />
+        </div>
+
+        {/* Content Container with top padding to offset the fixed header and timer */}
+        <div className="w-full pt-[112px] p-4">
+          <Attempts attempts={attempts} />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/profile/:id"
+              element={<ProfilePage resetTimer={resetTimer} />}
+            />
+            <Route
+              path="/login/:id"
+              element={<Login setAttempts={setAttempts} />}
+            />
+          </Routes>
+        </div>
       </div>
     </Router>
   );

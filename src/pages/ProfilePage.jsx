@@ -10,7 +10,7 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 const profiles = {
@@ -61,12 +61,23 @@ const profiles = {
   "j.ellens": {
     name: "Jamie Ellens",
     location: "Nijmegen, Nederland",
-    birthdate: "3 Augustus 1999",
+    birthdate: "3 Augustus",
     hobby: "Skaten, koken, graffiti",
-    image: "",
+    image:
+      "https://images.unsplash.com/photo-1611453621839-da40752783fa?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2thdGVyJTIwYm95fGVufDB8fDB8fHww",
     posts: [
-      { text: "De zoveelste kickflip van vandaag", image: "", likes: 99 },
-      { text: "Frans cuisine", image: "", likes: 90 },
+      {
+        text: "De zoveelste kickflip van vandaag",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Skateboarding_kickflip_2.jpg/220px-Skateboarding_kickflip_2.jpg",
+        likes: 99,
+      },
+      {
+        text: "Frans cuisine",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRIpqUKeuhR2q6JlrcAsZKsLdFLilHWlAyhA&s",
+        likes: 90,
+      },
     ],
   },
 };
@@ -74,97 +85,106 @@ const profiles = {
 function ProfilePage({ resetTimer }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  // Fallback to a default profile if the id isn't found
+  // Fallback default profile when none is found
   const profile = profiles[id] || profiles["ayaan-hassan"];
 
   const [isOpen, setIsOpen] = useState(false);
-
   const closeModal = () => setIsOpen(false);
-
   const handleBackToHome = () => {
     resetTimer();
     navigate("/");
   };
 
   return (
-    <div className="flex justify-center mt-10 px-4">
-      <Card className="w-full max-w-md shadow-lg">
-        <CardHeader floated={false} className="h-56">
-          {profile.image ? (
-            <img
-              src={profile.image}
-              alt="Profiel Foto"
-              className="w-full h-full object-cover rounded-lg"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gray-200 rounded-lg">
-              <Typography variant="h4" color="gray">
-                Geen foto
-              </Typography>
-            </div>
-          )}
-        </CardHeader>
-        <CardBody className="text-center">
-          <Typography variant="h5" color="blue-gray" className="mb-2">
-            {profile.name}
-          </Typography>
-          <Typography color="gray" className="mb-1">
-            {profile.location}
-          </Typography>
-          <Typography variant="small" color="gray" className="mb-4">
-            {profile.birthdate}
-          </Typography>
-          <Typography className="mb-4">
-            <strong>Hobby's:</strong> {profile.hobby}
-          </Typography>
+    <div className="min-h-screen bg-gray-900 text-white py-8 px-4">
+      {/* Header with Branding */}
+    
 
-          <Typography variant="h6" className="mb-2">
+      {/* Main content: Profile Info & Posts Grid */}
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
+        {/* Profile Info Column */}
+        <div className="md:w-1/3">
+          <Card className="bg-gray-800 border border-gray-700 shadow-lg">
+            <CardHeader floated={false} className="h-56">
+              {profile.image ? (
+                <img
+                  src={profile.image}
+                  alt="Profiel Foto"
+                  className="w-full h-full object-cover rounded-t-lg"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-gray-700 rounded-t-lg">
+                  <Typography variant="h4" color="gray">
+                    Geen foto
+                  </Typography>
+                </div>
+              )}
+            </CardHeader>
+            <CardBody>
+              <Typography variant="h5" className="mb-2">
+                {profile.name}
+              </Typography>
+              <Typography className="text-gray-400 mb-1">
+                {profile.location}
+              </Typography>
+              <Typography variant="small" className="text-gray-500 mb-4">
+                {profile.birthdate}
+              </Typography>
+              <Typography>
+                <strong>Hobby's:</strong> {profile.hobby}
+              </Typography>
+            </CardBody>
+            <CardFooter className="flex flex-col gap-2">
+              <Link to={`/login/${id}`}>
+                <Button fullWidth variant="filled" color="blue">
+                  Probeer in te loggen
+                </Button>
+              </Link>
+              <Button
+                fullWidth
+                variant="outlined"
+                color="gray"
+                onClick={() => setIsOpen(true)}
+              >
+                Terug naar Home
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
+
+        {/* Posts Grid Column */}
+        <div className="md:w-2/3">
+          <Typography variant="h6" className="mb-4 text-center">
             Posts
           </Typography>
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {profile.posts.map((post, index) => (
-              <Card key={index} className="bg-gray-100">
-                <CardBody>
-                  <Typography className="mb-2">
-                    <strong>{profile.name}:</strong> {post.text}
+              <Card key={index} className="bg-gray-800 border border-gray-700 shadow-md">
+                {post.image && (
+                  <img
+                    src={post.image}
+                    alt="Post afbeelding"
+                    className="object-cover w-full h-48 rounded-t-lg"
+                  />
+                )}
+                <CardBody className="p-2">
+                  <Typography variant="small" className="text-red-400 font-bold">
+                    ❤️ {post.likes}
                   </Typography>
-                  {post.image && (
-                    <img
-                      src={post.image}
-                      alt="Post afbeelding"
-                      className="w-full rounded-lg mb-2"
-                    />
-                  )}
-                  <Typography variant="small" color="red" className="font-bold">
-                    ❤️ {post.likes} likes
+                  {/* Optionally include post text */}
+                  <Typography variant="small" className="mt-1 text-gray-300">
+                    {post.text}
                   </Typography>
                 </CardBody>
               </Card>
             ))}
           </div>
-        </CardBody>
-        <CardFooter className="flex justify-between gap-2">
-          <Link to={`/login/${id}`} className="w-full">
-            <Button fullWidth variant="filled" color="blue">
-              Probeer in te loggen
-            </Button>
-          </Link>
-          <Button
-            fullWidth
-            variant="outlined"
-            color="gray"
-            onClick={() => setIsOpen(true)}
-          >
-            Terug naar Home
-          </Button>
-        </CardFooter>
-      </Card>
+        </div>
+      </div>
 
-      {/* Dialog for confirmation */}
+      {/* Dialog for Confirmation */}
       <Dialog open={isOpen} handler={closeModal}>
-        <DialogHeader>
-          Weet je zeker dat je deze pagina wilt verlaten?
-        </DialogHeader>
+        <DialogHeader>Weet je zeker dat je deze pagina wilt verlaten?</DialogHeader>
         <DialogBody divider>
           De timer zal worden gereset.
         </DialogBody>

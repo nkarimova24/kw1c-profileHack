@@ -50,9 +50,9 @@ function Login({ setAttempts }) {
   return (
     <div className="flex justify-center mt-10 px-4">
       {profileLogin ? (
-        <Card className="w-full max-w-md shadow-lg">
-          <CardHeader className="bg-blue-500 text-center py-4">
-            <Typography variant="h5" color="white">
+        <Card className="w-full max-w-md shadow-2xl bg-gray-800 border border-gray-700">
+          <CardHeader className="bg-gray-900 text-center py-4">
+            <Typography variant="h5" className="text-white">
               Welkom {profileLogin.name}
             </Typography>
           </CardHeader>
@@ -64,9 +64,11 @@ function Login({ setAttempts }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                className="bg-gray-700 text-white"
+                labelProps={{ className: "text-gray-300" }}
               />
               {message && (
-                <Typography variant="small" color="red">
+                <Typography variant="small" className="text-red-400">
                   {message}
                 </Typography>
               )}
@@ -84,7 +86,7 @@ function Login({ setAttempts }) {
           </form>
         </Card>
       ) : (
-        <Typography variant="h6" color="red" className="mt-10">
+        <Typography variant="h6" className="mt-10 text-red-400">
           Profiel niet gevonden.
         </Typography>
       )}
