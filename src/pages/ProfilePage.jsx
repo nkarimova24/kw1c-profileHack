@@ -80,6 +80,28 @@ const profiles = {
       },
     ],
   },
+  "lukas.20": {
+    name: "Lukas Huizen",
+    location: "Oploo, Nederland",
+    birthdate: "13 September",
+    hobby: "Programmeren, gamen, series kijken",
+    image:
+      "https://media.istockphoto.com/id/1305224036/photo/latin-man-gaming-on-his-pc-during-a-live-stream.jpg?s=612x612&w=0&k=20&c=m44oOlCqEgFs5MyLzz5zSr21kNmFbteOg0c6-ETNWSI=",
+    posts: [
+      {
+        text: "Rate mijn setup, ze noemen mij ook wel de GameMaster",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1NXnLGdg47QZNxKiI77zU2YNF1sS3yfNgA&s",
+        likes: 3,
+      },
+      {
+        text: "HACKED",
+        image:
+          "",
+        likes: 90,
+      },
+    ],
+  },
 };
 
 function ProfilePage({ resetTimer }) {

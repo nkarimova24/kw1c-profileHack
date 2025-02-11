@@ -5,7 +5,7 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import LoginPage from "./pages/LoginPage"; // Make sure this file exists and exports your LoginPage component.
+import LoginPage from "./pages/LoginPage"; 
 import ProfilePage from "./pages/ProfilePage";
 import HomePage from "./pages/HomePage";
 import Timer from "./components/Timer";

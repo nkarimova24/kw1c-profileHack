@@ -27,6 +27,12 @@ function HomePage() {
       image:
         "https://images.unsplash.com/photo-1611453621839-da40752783fa?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2thdGVyJTIwYm95fGVufDB8fDB8fHww",
     },
+    {
+    id: "lukas.20",
+    name: "Lukas Huizen",
+    image:
+      "https://media.istockphoto.com/id/1305224036/photo/latin-man-gaming-on-his-pc-during-a-live-stream.jpg?s=612x612&w=0&k=20&c=m44oOlCqEgFs5MyLzz5zSr21kNmFbteOg0c6-ETNWSI=",
+  },
   ];
 
   return (
@@ -34,10 +40,10 @@ function HomePage() {
       <Typography variant="h2" className="font-bold text-white">
         Welkom op InstaBlam
       </Typography>
-      <Typography variant="lead" className="mt-2text-gray-300">
-        Kies een profiel om te hacken:
+      <Typography variant="lead" className="mt-3 text-gray-300">
+        Kies een profiel
       </Typography>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8">
         {profiles.map((profile) => (
           <Card
             key={profile.id}
