@@ -8,36 +8,34 @@ const profileHints = {
     "Het wachtwoord bevat een jaartal."
   ],
   "/login/ayaan-hassan": [
-    "Denk aan de naam van een huisdier.",
-    "Fotografie speelt een rol in het wachtwoord.",
-    "Het wachtwoord bevat een jaartal."
+    "Denk aan een specifieke combinatie van letters en cijfers.",
+    "Controleer DeveloperTools (F12)"
   ],
   "/profile/emma-van-dijk": [
     "Het wachtwoord heeft te maken met schilderen.",
-    "Het wachtwoord bevat een cijfer.",
+    "Identificeert zich als",
     "Denk aan de geboortedatum."
   ],
   "/login/emma-van-dijk": [
-    "Het wachtwoord heeft te maken met schilderen.",
-    "Het wachtwoord bevat een cijfer.",
-    "Denk aan de geboortedatum."
+    "Controleer DeveloperTools (F12)"
   ],
   "/profile/j.ellens": [
     "Het wachtwoord heeft te maken met zijn skateboarden",
     "Denk aan het geboortejaar."
   ],
   "/login/j.ellens": [
-    "Het wachtwoord heeft te maken met zijn skateboarden",
-    "Denk aan het geboortejaar."
+    "Combineer een sport met een getal.",
+    "Controleer DeveloperTools (F12)"
   ],
   "/profile/lukas.20": [
-    "Kijk naar de titel van de post.",
+    "Kijk naar de beschrijving van een post.",
+    "Denk aan zijn passie",
     "Denk aan zijn leeftijd."
   ],
   "/login/lukas.20": [
-    "Kijk naar de titel van de post.",
-    "Denk aan zijn leeftijd."
-  ]
+    "Controleer DeveloperTools (F12)"
+  ],
+
 };
 
 function Timer() {
@@ -61,17 +59,19 @@ function Timer() {
     const hintInterval = setInterval(() => {
       const profileKey = location.pathname;
       if (profileHints[profileKey]) {
-        const currentHints = profileHints[profileKey];
-        const newHint = currentHints[Math.floor(Math.random() * currentHints.length)];
-        setHintsShown((prevHints) => [...prevHints, newHint]);
+        const currentHints = profileHints[profileKey].filter(hint => !hintsShown.includes(hint));
+        if (currentHints.length > 0) {
+          const newHint = currentHints[Math.floor(Math.random() * currentHints.length)];
+          setHintsShown((prevHints) => [...prevHints, newHint]);
+        }
       }
-    }, 60000); // Elke minuut een nieuwe hint
+    }, 60000); 
     
     return () => {
       clearInterval(timeInterval);
       clearInterval(hintInterval);
     };
-  }, [location.pathname]);
+  }, [location.pathname, hintsShown]);
 
   const minutes = Math.floor(elapsedTime / 60);
   const seconds = elapsedTime % 60;

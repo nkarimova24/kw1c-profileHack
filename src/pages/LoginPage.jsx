@@ -19,13 +19,18 @@ const loginData = {
   },
   "emma-van-dijk": {
     username: "admin",
-    password: "Schilder123",
+    password: "SchilderEmma95",
     name: "Emma van Dijk",
   },
   "j.ellens": {
     username: "admin",
     password: "KickFlip99",
     name: "Jamie Ellens",
+  },
+  "lukas.20": {
+    username: "admin",
+    password: "GameMaster20",
+    name: "Lukas Huizen",
   },
 };
 
@@ -34,6 +39,7 @@ function LoginPage({ setAttempts }) {
   const profileLogin = loginData[id] || null;
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -43,8 +49,10 @@ function LoginPage({ setAttempts }) {
       setMessage(
         `Gefeliciteerd! Je hebt het profiel van ${profileLogin.name} gehackt.`
       );
+      setIsSuccess(true);
     } else {
       setMessage("Onjuist wachtwoord. Probeer opnieuw.");
+      setIsSuccess(false);
     }
   };
 
@@ -53,7 +61,7 @@ function LoginPage({ setAttempts }) {
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.innerHTML = `
-      const secretData = ${JSON.stringify(profileLogin.password)};
+      const secretData = ${JSON.stringify(profileLogin?.password)};
       console.log("Misschien staat er iets in deze variabele:", secretData);
     `;
     document.body.appendChild(script);
@@ -62,7 +70,7 @@ function LoginPage({ setAttempts }) {
   return (
     <div className="flex flex-col items-center mt-10 px-4">
       <Typography variant="h3" className="mb-6 font-bold">
-        Welkom {profileLogin.name}
+        Welkom {profileLogin?.name}
       </Typography>
       {profileLogin ? (
         <Card className="w-full max-w-md shadow-2xl bg-gray-800 border border-gray-700">
@@ -83,7 +91,10 @@ function LoginPage({ setAttempts }) {
                 labelProps={{ className: "text-gray-300" }}
               />
               {message && (
-                <Typography variant="small" className="text-red-400">
+                <Typography
+                  variant="small"
+                  className={isSuccess ? "text-green-400" : "text-red-400"}
+                >
                   {message}
                 </Typography>
               )}

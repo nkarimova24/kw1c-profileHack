@@ -33,6 +33,7 @@ function HomePage() {
     image:
       "https://media.istockphoto.com/id/1305224036/photo/latin-man-gaming-on-his-pc-during-a-live-stream.jpg?s=612x612&w=0&k=20&c=m44oOlCqEgFs5MyLzz5zSr21kNmFbteOg0c6-ETNWSI=",
   },
+  
   ];
 
   return (
