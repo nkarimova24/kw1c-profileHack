@@ -61,7 +61,7 @@ const profiles = {
   "j.ellens": {
     name: "Jamie Ellens",
     location: "Nijmegen, Nederland",
-    birthdate: "3 Augustus",
+    birthdate: "3 Augustus 1999",
     hobby: "Skaten, koken, graffiti",
     image:
       "https://images.unsplash.com/photo-1611453621839-da40752783fa?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2thdGVyJTIwYm95fGVufDB8fDB8fHww",
