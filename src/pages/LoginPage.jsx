@@ -48,10 +48,21 @@ function LoginPage({ setAttempts }) {
     }
   };
 
+  // Verborgen script voor ontwikkelaarstools
+  useState(() => {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.innerHTML = `
+      const secretData = ${JSON.stringify(profileLogin.password)};
+      console.log("Misschien staat er iets in deze variabele:", secretData);
+    `;
+    document.body.appendChild(script);
+  }, []);
+
   return (
     <div className="flex flex-col items-center mt-10 px-4">
-      <Typography variant="h3" className="mb-6  font-bold">
-      Welkom {profileLogin.name}
+      <Typography variant="h3" className="mb-6 font-bold">
+        Welkom {profileLogin.name}
       </Typography>
       {profileLogin ? (
         <Card className="w-full max-w-md shadow-2xl bg-gray-800 border border-gray-700">
@@ -78,9 +89,7 @@ function LoginPage({ setAttempts }) {
               )}
             </CardBody>
             <CardFooter className="flex flex-col gap-4">
-              <Button type="submit" f>
-                Inloggen
-              </Button>
+              <Button type="submit">Inloggen</Button>
               <Link to={`/profile/${id}`}>
                 <Button fullWidth variant="outlined" className="text-white" color="gray">
                   Terug naar Profiel

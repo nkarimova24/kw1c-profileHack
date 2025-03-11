@@ -7,7 +7,17 @@ const profileHints = {
     "Fotografie speelt een rol in het wachtwoord.",
     "Het wachtwoord bevat een jaartal."
   ],
+  "/login/ayaan-hassan": [
+    "Denk aan de naam van een huisdier.",
+    "Fotografie speelt een rol in het wachtwoord.",
+    "Het wachtwoord bevat een jaartal."
+  ],
   "/profile/emma-van-dijk": [
+    "Het wachtwoord heeft te maken met schilderen.",
+    "Het wachtwoord bevat een cijfer.",
+    "Denk aan de geboortedatum."
+  ],
+  "/login/emma-van-dijk": [
     "Het wachtwoord heeft te maken met schilderen.",
     "Het wachtwoord bevat een cijfer.",
     "Denk aan de geboortedatum."
@@ -16,7 +26,15 @@ const profileHints = {
     "Het wachtwoord heeft te maken met zijn skateboarden",
     "Denk aan het geboortejaar."
   ],
+  "/login/j.ellens": [
+    "Het wachtwoord heeft te maken met zijn skateboarden",
+    "Denk aan het geboortejaar."
+  ],
   "/profile/lukas.20": [
+    "Kijk naar de titel van de post.",
+    "Denk aan zijn leeftijd."
+  ],
+  "/login/lukas.20": [
     "Kijk naar de titel van de post.",
     "Denk aan zijn leeftijd."
   ]
@@ -41,10 +59,11 @@ function Timer() {
     }, 1000); // Elke seconde verhogen
     
     const hintInterval = setInterval(() => {
-      if (profileHints[location.pathname]) {
-        const currentHints = profileHints[location.pathname];
-        const randomHint = currentHints[Math.floor(Math.random() * currentHints.length)];
-        setHintsShown((prevHints) => [...prevHints, randomHint]);
+      const profileKey = location.pathname;
+      if (profileHints[profileKey]) {
+        const currentHints = profileHints[profileKey];
+        const newHint = currentHints[Math.floor(Math.random() * currentHints.length)];
+        setHintsShown((prevHints) => [...prevHints, newHint]);
       }
     }, 60000); // Elke minuut een nieuwe hint
     
